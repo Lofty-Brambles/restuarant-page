@@ -3,15 +3,22 @@ function makePage() {
 		"div",
 		`<span class="color">Come along and 
 		<strong>cherish</strong> some fresh breakfast!</span>`,
-		"head"
+		"header"
 	);
 	const lowerHero = create(
 		"h5",
 		"Charming, cheap and choice!"
 	);
+	const button = document.createElement("button");
+	button.textContent = "Order Now!";
+	button.addEventListener("click", () => {
+		document.querySelector(".menu-btn").click();
+	});
 	const hero = create("div");
+	hero.classList.add("hero");
 	hero.appendChild(upperHero);
 	hero.appendChild(lowerHero);
+	hero.appendChild(button);
 
 	const upperBox = create(
 		"div",
@@ -25,7 +32,7 @@ function makePage() {
 		<span class="block">
 		<span class="color">Monday - Friday: </span>
 		4:00 a.m - 4:00 p.m
-		<span class="color">Saturday - Sunday</span>
+		<br><span class="color">Saturday - Sunday:</span>
 		6:00 a.m - 6:00 p.m</span>`
 	);
 	const box = create("div", "", "info");

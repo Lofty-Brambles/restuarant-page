@@ -1,9 +1,14 @@
-import homeLoad from "./home";
+import burger from "./../assets/burger.png";
+import doubleBurger from "./../assets/double-burger.png";
+import sandwich from "./../assets/sandwich.png";
+import frenchFries from "./../assets/french-fries.png";
+import ribs from "./../assets/ribs.png";
+import caesar from "./../assets/caesar-salad.png";
 
 function makePage() {
 	const title = document.createElement("div");
 	title.classList.add("head");
-	title.innerHTML = `<span class="material-icons">
+	title.innerHTML = `<span class="material-icons md-48">
 		outdoor_grill</span> Menu`;
 
 	const eleArray = [];
@@ -21,11 +26,6 @@ function makePage() {
 		"filled-sandwich",
 		"2.49",
 		"Grilled, toasted, cheese-ed with our special sauce."
-	]);
-	addItem(eleArray, [
-		"gourmet-sandwich",
-		"4.49",
-		"Fresh brown bread sandwich, with veggies and munchies."
 	]);
 	addItem(eleArray, [
 		"french-fries",
@@ -58,7 +58,7 @@ function addItem(array, prop) {
 
 	const image = document.createElement("img");
 	image.classList.add("block");
-	image.src = `./../assets/${prop[0]}.png`;
+	image.src = imager(prop[0]);
 	image.alt = prop[0];
 
 	const itemTitle = document.createElement("div");
@@ -80,8 +80,25 @@ function addItem(array, prop) {
 
 function toTitle(string) {
 	return string.split("-")
-		.map(word => word.toUpperCase())
+		.map(word => word[0].toUpperCase() + word.slice(1))
 		.join(" ");
+}
+
+function imager(name) {
+	switch (name) {
+		case "burger":
+			return burger;
+		case "double-burger":
+			return doubleBurger;
+		case "filled-sandwich":
+			return sandwich;
+		case "french-fries":
+			return frenchFries;
+		case "barbecue-ribs":
+			return ribs;
+		case "caesar-salad":
+			return caesar;
+	}
 }
 
 function menuLoad() {

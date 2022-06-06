@@ -35,6 +35,7 @@ function createNav() {
 		homeLoad();
 	});
 	menuBtn.innerHTML = `<span class="material-icons">menu</span>Menu`;
+	menuBtn.classList.add("menu-btn");
 	menuBtn.addEventListener("click", e => {
 		if (e.target.classList.contains("active")) return;
 		activateBtn(menuBtn);
