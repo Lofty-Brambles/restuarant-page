@@ -1,0 +1,119 @@
+@use "add";
+@use "normalize";
+
+body {
+	@include add.flex(column, space-between);
+	min-height: 100vh;
+}
+
+header {
+	@include add.box(100%, 10vh);
+	@include add.flex();
+	gap: 1rem;
+	@include add.gradient(add.$light, add.$dark, horizontal);
+
+	font-family: add.$titan;
+	font-weight: 500;
+	font-size: 2rem;
+
+	& img {
+		@include add.box(2rem);
+	}
+}
+
+nav {
+	@include add.box(100%, 7vh);
+	@include add.flex(row, center, flex-end);
+	@include add.gradient(add.$light, add.$dark, horizontal);
+	border-bottom: 0.3rem double add.$light;
+
+	& button {
+		@include add.flex();
+		gap: 0.5rem;
+		height: 100%;
+		width: 7rem;
+
+		position: relative;
+		transition: all 0.3s ease;
+		color: add.$light;
+		background-color: transparent;
+		border: none;
+
+		&::after, &::before {
+			content: "";
+			@include add.box(0.75rem);
+			position: absolute;
+			transition: all 0.4s ease-in-out;
+			opacity: 0;
+		}
+
+		&::before {
+			content: "";
+			transform: translate(-100%, 50%);
+
+			border-top: 3px solid add.$cyan;
+			border-right: 3px solid add.$cyan;
+			right: 0;
+			top: 0;
+		}
+
+		&::after {
+			content: "";
+			transform: translate(-100%, 50%);
+
+			border-bottom: 3px solid add.$cyan;
+			border-left: 3px solid add.$cyan;
+			left: 0;
+			bottom: 0;
+		}
+
+		&:hover {
+			color: add.$cyan;
+		}
+
+		&.active {
+			background-color: add.$l-dark;
+		}
+
+		&:hover::after, &:hover::before,
+		&.active::after, &.active::before {
+			transform: translate(0, 0);
+			opacity: 1;
+		}
+	}
+}
+
+main {
+	box-sizing: content-box;
+	width: calc(100% - 4rem);
+	padding: 2rem;
+	background-image: url(./assets/background.jpg);
+}
+
+footer {
+	@include add.box(100%, 10vh);
+	@include add.flex();
+	gap: 0.5rem;
+	@include add.gradient(add.$light, add.$dark, horizontal);
+	border-top: 0.3rem double add.$light;
+
+	& div {
+		font-family: add.$fedora;
+		font-size: 1rem;
+	}
+
+	& a {
+		display: block;
+		@include add.circle();
+
+		& img {
+			@include add.box(2rem);
+			transition: transform 0.5s ease-in-out;
+
+			&:hover {
+				transform: rotate(360deg) scale(1.2);
+			}
+		}
+	}
+}
+
